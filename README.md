@@ -16,6 +16,8 @@ make clean && make
 
 cd sw/lib/python/pprz_math and make
 
+./start.py and select Conf: "userconf/tudelft/conf.xml" and Controlpanel: "userconf/tudelft/control_panel.xml" as active.
+
 ./paparazzi
 
 ## Running simulation
