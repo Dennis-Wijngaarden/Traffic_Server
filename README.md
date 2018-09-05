@@ -3,22 +3,27 @@
 
 ./VirtualEntityServer_cli -o output.log Valkenburg_InputFile.ini
 
+# Preinstall
+
+ sudo su
+ apt-get install pip
+ pip install shapely pyclipper geodetic asterix_decoder
+ apt-get install swig2.0
+
 # Paparazzi 
 ## Starting
 
-git checkout dynamic_avoidance
+ git checkout dynamic_avoidance
+ git submodule sync
+ git submodule update
+ make clean && make
 
-git submodule sync
+ cd sw/lib/python/pprz_math 
+ make
+ 
+ ./paparazzi
 
-git submodule update
-
-make clean && make
-
-cd sw/lib/python/pprz_math and make
-
-./paparazzi
-
-## Running simulation
+## Simulated flight
 A/C = Easystar_Sim
 (Flight plan: flight_plans/tudelft/Valkenburg_EZ_avoidance_sim.xml)
 
@@ -26,7 +31,7 @@ Target: nps
 
 Session: Sim_valkenburg_EZ
 
-## Running on disco
+## Real flight on e.g. disco
 A/C = Disco 
 (Airframe: airframes/OPENUAS/openuas_parrot_disco.xml)
 (Flight plan: flight_plans/tudelft/Valkenburg_disco_avoidance.xml)
